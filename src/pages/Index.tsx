@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import func2url from '../../backend/func2url.json';
 
 const HERO_IMG = 'https://cdn.poehali.dev/projects/211c54d5-224f-427e-b237-3b6461f67a2b/files/11b4d4a6-2af8-4f00-bfaa-1d0ae540f46d.jpg';
@@ -71,9 +72,41 @@ const Index = () => {
   const { toast } = useToast();
   const [form, setForm] = useState({ name: '', email: '', company: '', message: '' });
   const [sending, setSending] = useState(false);
+  const [offerModal, setOfferModal] = useState<string | null>(null);
+  const [offerForm, setOfferForm] = useState({ name: '', email: '', comment: '' });
+  const [offerSending, setOfferSending] = useState(false);
 
   const onField = (key: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm((f) => ({ ...f, [key]: e.target.value }));
+
+  const submitOffer = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!offerForm.name.trim() || !offerForm.email.trim()) {
+      toast({ title: 'Заполните имя и email', variant: 'destructive' });
+      return;
+    }
+    setOfferSending(true);
+    try {
+      const res = await fetch(func2url['send-contact'], {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: offerForm.name,
+          email: offerForm.email,
+          company: '',
+          message: `Отклик на торговое предложение: «${offerModal}»\n\n${offerForm.comment}`,
+        }),
+      });
+      if (!res.ok) throw new Error();
+      toast({ title: 'Отклик отправлен!', description: 'Менеджер свяжется с вами в ближайшее время.' });
+      setOfferModal(null);
+      setOfferForm({ name: '', email: '', comment: '' });
+    } catch {
+      toast({ title: 'Не удалось отправить', description: 'Попробуйте позже или напишите на hello@mrexport.ru', variant: 'destructive' });
+    } finally {
+      setOfferSending(false);
+    }
+  };
 
   const submitForm = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -327,7 +360,9 @@ const Index = () => {
                   <Field icon="Tag" label="Цена" value={o.price} />
                   <Field icon="MapPin" label="Условия" value={o.geo} />
                 </div>
-                <Button className="mt-5 w-full" variant="outline">Откликнуться на заявку</Button>
+                <Button className="mt-5 w-full" variant="outline" onClick={() => setOfferModal(o.title)}>
+                  <Icon name="Send" size={16} className="mr-2" /> Откликнуться на заявку
+                </Button>
               </div>
             ))}
           </div>
@@ -461,6 +496,40 @@ const Index = () => {
           </div>
         </div>
       </footer>
+      {/* OFFER MODAL */}
+      <Dialog open={!!offerModal} onOpenChange={(o) => !o && setOfferModal(null)}>
+        <DialogContent className="max-w-md">
+          <DialogHeader>
+            <DialogTitle className="font-display text-xl">Отклик на предложение</DialogTitle>
+          </DialogHeader>
+          <p className="rounded-xl bg-muted px-4 py-3 text-sm text-muted-foreground">«{offerModal}»</p>
+          <form className="mt-2 space-y-3" onSubmit={submitOffer}>
+            <Input
+              placeholder="Ваше имя *"
+              value={offerForm.name}
+              onChange={(e) => setOfferForm((f) => ({ ...f, name: e.target.value }))}
+              className="h-11"
+            />
+            <Input
+              type="email"
+              placeholder="Email *"
+              value={offerForm.email}
+              onChange={(e) => setOfferForm((f) => ({ ...f, email: e.target.value }))}
+              className="h-11"
+            />
+            <textarea
+              placeholder="Комментарий (необязательно)"
+              rows={3}
+              value={offerForm.comment}
+              onChange={(e) => setOfferForm((f) => ({ ...f, comment: e.target.value }))}
+              className="w-full rounded-md border border-input bg-background px-3 py-2.5 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            />
+            <Button type="submit" disabled={offerSending} className="w-full gradient-export font-semibold text-white" size="lg">
+              {offerSending ? 'Отправляем…' : 'Отправить отклик'}
+            </Button>
+          </form>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
