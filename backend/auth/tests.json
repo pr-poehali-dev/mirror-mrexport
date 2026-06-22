@@ -1,0 +1,24 @@
+{
+  "tests": [
+    {
+      "name": "OPTIONS CORS preflight",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    },
+    {
+      "name": "Регистрация без данных",
+      "method": "POST",
+      "path": "/register",
+      "body": {},
+      "expectedStatus": 400
+    },
+    {
+      "name": "Вход без данных",
+      "method": "POST",
+      "path": "/login",
+      "body": {},
+      "expectedStatus": 400
+    }
+  ]
+}

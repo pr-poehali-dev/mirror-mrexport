@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Icon from '@/components/ui/icon';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -70,6 +71,8 @@ const ARTICLES = [
 const Index = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { toast } = useToast();
+  const navigate = useNavigate();
+  const partner = (() => { try { return JSON.parse(localStorage.getItem('mx_partner') || 'null'); } catch { return null; } })();
   const [form, setForm] = useState({ name: '', email: '', company: '', message: '' });
   const [sending, setSending] = useState(false);
   const [offerModal, setOfferModal] = useState<string | null>(null);
@@ -159,10 +162,26 @@ const Index = () => {
             </nav>
 
             <div className="hidden items-center gap-2 lg:flex">
-              <Button variant="ghost" className="text-white hover:bg-white/10 hover:text-white">Войти</Button>
-              <Button className="gradient-accent font-semibold text-[hsl(211_80%_18%)] hover:opacity-90">
-                Регистрация
-              </Button>
+              {partner ? (
+                <>
+                  <div className="flex items-center gap-2 rounded-xl border border-white/15 bg-white/10 px-3 py-2 text-sm text-white">
+                    <Icon name="UserCircle" size={18} className="text-[hsl(38_95%_60%)]" />
+                    <span className="font-medium">{partner.name}</span>
+                    {partner.verified && <Icon name="BadgeCheck" size={15} className="text-[hsl(168_76%_55%)]" />}
+                  </div>
+                  <Button variant="ghost" className="text-white/70 hover:bg-white/10 hover:text-white"
+                    onClick={() => { localStorage.removeItem('mx_token'); localStorage.removeItem('mx_partner'); window.location.reload(); }}>
+                    Выйти
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Button variant="ghost" className="text-white hover:bg-white/10 hover:text-white" onClick={() => navigate('/auth')}>Войти</Button>
+                  <Button className="gradient-accent font-semibold text-[hsl(211_80%_18%)] hover:opacity-90" onClick={() => navigate('/auth')}>
+                    Регистрация
+                  </Button>
+                </>
+              )}
             </div>
 
             <button className="lg:hidden text-white" onClick={() => setMenuOpen(!menuOpen)}>
@@ -182,7 +201,16 @@ const Index = () => {
                   {n.label}
                 </a>
               ))}
-              <Button className="mt-2 w-full gradient-accent font-semibold text-[hsl(211_80%_18%)]">Регистрация</Button>
+              {partner ? (
+                <Button className="mt-2 w-full" variant="ghost"
+                  onClick={() => { localStorage.removeItem('mx_token'); localStorage.removeItem('mx_partner'); window.location.reload(); }}>
+                  Выйти ({partner.name})
+                </Button>
+              ) : (
+                <Button className="mt-2 w-full gradient-accent font-semibold text-[hsl(211_80%_18%)]" onClick={() => navigate('/auth')}>
+                  Регистрация
+                </Button>
+              )}
             </div>
           )}
         </div>

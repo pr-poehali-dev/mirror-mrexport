@@ -1,0 +1,10 @@
+CREATE TABLE IF NOT EXISTS t_p55504853_mirror_mrexport.partners (
+  id SERIAL PRIMARY KEY,
+  name TEXT NOT NULL,
+  email TEXT NOT NULL UNIQUE,
+  company TEXT NOT NULL,
+  country TEXT NOT NULL DEFAULT '',
+  password_hash TEXT NOT NULL,
+  verified BOOLEAN NOT NULL DEFAULT FALSE,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
