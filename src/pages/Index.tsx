@@ -3,6 +3,8 @@ import Icon from '@/components/ui/icon';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
+import { useToast } from '@/hooks/use-toast';
+import func2url from '../../backend/func2url.json';
 
 const HERO_IMG = 'https://cdn.poehali.dev/projects/211c54d5-224f-427e-b237-3b6461f67a2b/files/11b4d4a6-2af8-4f00-bfaa-1d0ae540f46d.jpg';
 const MAP_IMG = 'https://cdn.poehali.dev/projects/211c54d5-224f-427e-b237-3b6461f67a2b/files/2eec3a18-6cb4-4748-82e0-fcd8bc0c975f.jpg';
@@ -66,6 +68,35 @@ const ARTICLES = [
 
 const Index = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { toast } = useToast();
+  const [form, setForm] = useState({ name: '', email: '', company: '', message: '' });
+  const [sending, setSending] = useState(false);
+
+  const onField = (key: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    setForm((f) => ({ ...f, [key]: e.target.value }));
+
+  const submitForm = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.name.trim() || !form.email.trim()) {
+      toast({ title: 'Заполните имя и email', variant: 'destructive' });
+      return;
+    }
+    setSending(true);
+    try {
+      const res = await fetch(func2url['send-contact'], {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error();
+      toast({ title: 'Заявка отправлена!', description: 'Менеджер свяжется с вами в ближайшее время.' });
+      setForm({ name: '', email: '', company: '', message: '' });
+    } catch {
+      toast({ title: 'Не удалось отправить', description: 'Попробуйте позже или напишите на hello@mrexport.ru', variant: 'destructive' });
+    } finally {
+      setSending(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background text-foreground antialiased">
@@ -382,16 +413,20 @@ const Index = () => {
                 <Contact icon="MapPin" label="Офис" value="Москва, Пресненская наб., 12" />
               </div>
             </div>
-            <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-              <Input placeholder="Ваше имя" className="h-12" />
-              <Input type="email" placeholder="Email" className="h-12" />
-              <Input placeholder="Компания" className="h-12" />
+            <form className="space-y-4" onSubmit={submitForm}>
+              <Input placeholder="Ваше имя" className="h-12" value={form.name} onChange={onField('name')} />
+              <Input type="email" placeholder="Email" className="h-12" value={form.email} onChange={onField('email')} />
+              <Input placeholder="Компания" className="h-12" value={form.company} onChange={onField('company')} />
               <textarea
                 placeholder="Сообщение"
                 rows={4}
+                value={form.message}
+                onChange={onField('message')}
                 className="w-full rounded-md border border-input bg-background px-3 py-2.5 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               />
-              <Button className="w-full gradient-export font-semibold text-white" size="lg">Отправить заявку</Button>
+              <Button type="submit" disabled={sending} className="w-full gradient-export font-semibold text-white" size="lg">
+                {sending ? 'Отправляем…' : 'Отправить заявку'}
+              </Button>
             </form>
           </div>
         </div>
