@@ -233,7 +233,7 @@ const Index = () => {
               <span className="text-gradient">без границ</span>
             </h1>
             <p className="mt-6 max-w-xl animate-float-up text-lg text-white/75" style={{ animationDelay: '0.2s' }}>
-              MrExport объединяет производителей, поставщиков и экспортёров. Находите проверенных партнёров и заключайте сделки по всему миру.
+              SD Trade объединяет производителей, поставщиков и экспортёров. Находите проверенных партнёров и заключайте сделки по всему миру.
             </p>
 
             {/* SEARCH */}
