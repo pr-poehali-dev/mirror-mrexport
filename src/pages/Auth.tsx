@@ -82,7 +82,7 @@ const Auth = () => {
       <div className="hidden lg:flex lg:w-1/2 flex-col justify-between p-12 relative overflow-hidden">
         <div className="absolute inset-0 mesh-bg" />
         <a href="/" className="relative flex items-center gap-2.5">
-          <div className="grid h-10 w-10 place-items-center rounded-xl gradient-accent text-[hsl(211_80%_18%)]">
+          <div className="grid h-10 w-10 place-items-center rounded-xl gradient-accent text-[hsl(222_55%_12%)]">
             <Icon name="Globe2" size={22} />
           </div>
           <span className="font-display text-xl font-bold text-gradient">
@@ -103,7 +103,7 @@ const Auth = () => {
             ].map((f) => (
               <div key={f.text} className="flex items-center gap-3">
                 <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white/10">
-                  <Icon name={f.icon} size={18} className="text-[hsl(38_95%_60%)]" />
+                  <Icon name={f.icon} size={18} className="text-[hsl(43_85%_48%)]" />
                 </div>
                 <span className="text-white/85 text-sm">{f.text}</span>
               </div>
@@ -113,7 +113,7 @@ const Auth = () => {
 
         <div className="relative rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur">
           <div className="flex items-center gap-3">
-            <div className="grid h-10 w-10 place-items-center rounded-xl gradient-accent font-display font-bold text-[hsl(211_80%_18%)] text-sm">AG</div>
+            <div className="grid h-10 w-10 place-items-center rounded-xl gradient-accent font-display font-bold text-[hsl(222_55%_12%)] text-sm">AG</div>
             <div>
               <div className="font-semibold text-white text-sm">AgroGlobal Trade</div>
               <div className="text-white/55 text-xs">Казахстан • Зерновые культуры</div>
@@ -123,7 +123,7 @@ const Auth = () => {
             «Через SD Trade нашли надёжных покупателей в Египте и Иране. Теперь экспортируем 80 000 т/год.»
           </p>
           <div className="mt-2 flex gap-0.5">
-            {[1,2,3,4,5].map(s => <Icon key={s} name="Star" size={13} className="text-[hsl(38_95%_60%)]" />)}
+            {[1,2,3,4,5].map(s => <Icon key={s} name="Star" size={13} className="text-[hsl(43_85%_48%)]" />)}
           </div>
         </div>
       </div>

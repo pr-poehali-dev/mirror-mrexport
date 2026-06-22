@@ -4,33 +4,33 @@
 
 @layer base {
   :root {
-    --background: 210 40% 99%;
-    --foreground: 215 45% 12%;
+    --background: 220 20% 98%;
+    --foreground: 222 35% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 215 45% 12%;
+    --card-foreground: 222 35% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 215 45% 12%;
+    --popover-foreground: 222 35% 10%;
 
-    --primary: 211 80% 28%;
+    --primary: 222 55% 22%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 168 76% 42%;
+    --secondary: 215 25% 40%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 30% 95%;
-    --muted-foreground: 215 18% 42%;
+    --muted: 220 18% 94%;
+    --muted-foreground: 220 12% 46%;
 
-    --accent: 38 95% 55%;
-    --accent-foreground: 215 45% 12%;
+    --accent: 43 85% 48%;
+    --accent-foreground: 222 35% 10%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 90%;
-    --input: 214.3 31.8% 90%;
-    --ring: 211 80% 28%;
+    --border: 220 18% 88%;
+    --input: 220 18% 88%;
+    --ring: 222 55% 22%;
 
     --radius: 0.75rem;
 
@@ -112,42 +112,38 @@
   .gradient-export {
     background: linear-gradient(
       135deg,
-      hsl(211 85% 18%) 0%,
-      hsl(200 80% 30%) 45%,
-      hsl(168 70% 38%) 100%
+      hsl(222 60% 12%) 0%,
+      hsl(222 50% 20%) 50%,
+      hsl(215 40% 28%) 100%
     );
   }
   .gradient-accent {
-    background: linear-gradient(120deg, hsl(168 76% 42%), hsl(38 95% 55%));
+    background: linear-gradient(120deg, hsl(43 85% 44%), hsl(43 90% 56%));
   }
   .text-gradient {
-    background: linear-gradient(120deg, hsl(168 76% 50%), hsl(38 95% 60%));
+    background: linear-gradient(120deg, hsl(43 85% 48%), hsl(38 80% 62%));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
   .glass {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.06);
     backdrop-filter: blur(14px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
   .mesh-bg {
     background-image:
       radial-gradient(
         at 15% 20%,
-        hsla(168, 76%, 42%, 0.18) 0px,
+        hsla(222, 60%, 30%, 0.35) 0px,
         transparent 50%
       ),
       radial-gradient(
         at 85% 10%,
-        hsla(38, 95%, 55%, 0.15) 0px,
+        hsla(43, 85%, 48%, 0.12) 0px,
         transparent 50%
       ),
-      radial-gradient(
-        at 70% 90%,
-        hsla(211, 80%, 40%, 0.18) 0px,
-        transparent 50%
-      );
+      radial-gradient(at 70% 90%, hsla(215, 50%, 20%, 0.3) 0px, transparent 50%);
   }
   .hover-lift {
     transition:
@@ -155,8 +151,8 @@
       box-shadow 0.35s ease;
   }
   .hover-lift:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 24px 50px -12px hsla(211, 80%, 28%, 0.28);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 44px -10px hsla(222, 55%, 15%, 0.32);
   }
 }
 

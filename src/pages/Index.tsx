@@ -139,9 +139,9 @@ const Index = () => {
       {/* HEADER */}
       <header className="fixed top-0 inset-x-0 z-50">
         <div className="container">
-          <div className="mt-4 flex items-center justify-between rounded-2xl border border-white/10 bg-[hsl(211_45%_12%/0.7)] px-5 py-3 backdrop-blur-xl">
+          <div className="mt-4 flex items-center justify-between rounded-2xl border border-white/10 bg-[hsl(222_55%_10%/0.75)] px-5 py-3 backdrop-blur-xl">
             <a href="#hero" className="flex items-center gap-2.5">
-              <div className="grid h-10 w-10 place-items-center rounded-xl gradient-accent text-[hsl(211_80%_18%)]">
+              <div className="grid h-10 w-10 place-items-center rounded-xl gradient-accent text-[hsl(222_55%_12%)]">
                 <Icon name="Globe2" size={22} />
               </div>
               <span className="font-display text-xl font-bold tracking-wide text-gradient">
@@ -165,9 +165,9 @@ const Index = () => {
               {partner ? (
                 <>
                   <div className="flex items-center gap-2 rounded-xl border border-white/15 bg-white/10 px-3 py-2 text-sm text-white">
-                    <Icon name="UserCircle" size={18} className="text-[hsl(38_95%_60%)]" />
+                    <Icon name="UserCircle" size={18} className="text-[hsl(43_85%_48%)]" />
                     <span className="font-medium">{partner.name}</span>
-                    {partner.verified && <Icon name="BadgeCheck" size={15} className="text-[hsl(168_76%_55%)]" />}
+                    {partner.verified && <Icon name="BadgeCheck" size={15} className="text-[hsl(43_85%_55%)]" />}
                   </div>
                   <Button variant="ghost" className="text-white/70 hover:bg-white/10 hover:text-white"
                     onClick={() => { localStorage.removeItem('mx_token'); localStorage.removeItem('mx_partner'); window.location.reload(); }}>
@@ -177,7 +177,7 @@ const Index = () => {
               ) : (
                 <>
                   <Button variant="ghost" className="text-white hover:bg-white/10 hover:text-white" onClick={() => navigate('/auth')}>Войти</Button>
-                  <Button className="gradient-accent font-semibold text-[hsl(211_80%_18%)] hover:opacity-90" onClick={() => navigate('/auth')}>
+                  <Button className="gradient-accent font-semibold text-[hsl(222_55%_12%)] hover:opacity-90" onClick={() => navigate('/auth')}>
                     Регистрация
                   </Button>
                 </>
@@ -190,7 +190,7 @@ const Index = () => {
           </div>
 
           {menuOpen && (
-            <div className="mt-2 rounded-2xl border border-white/10 bg-[hsl(211_45%_12%/0.95)] p-3 backdrop-blur-xl lg:hidden animate-fade-in">
+            <div className="mt-2 rounded-2xl border border-white/10 bg-[hsl(222_55%_10%/0.97)] p-3 backdrop-blur-xl lg:hidden animate-fade-in">
               {NAV.map((n) => (
                 <a
                   key={n.label}
@@ -207,7 +207,7 @@ const Index = () => {
                   Выйти ({partner.name})
                 </Button>
               ) : (
-                <Button className="mt-2 w-full gradient-accent font-semibold text-[hsl(211_80%_18%)]" onClick={() => navigate('/auth')}>
+                <Button className="mt-2 w-full gradient-accent font-semibold text-[hsl(222_55%_12%)]" onClick={() => navigate('/auth')}>
                   Регистрация
                 </Button>
               )}
@@ -225,7 +225,7 @@ const Index = () => {
         <div className="container relative">
           <div className="max-w-3xl">
             <Badge className="mb-6 animate-float-up border-white/20 bg-white/10 px-4 py-1.5 text-sm text-white backdrop-blur" style={{ animationDelay: '0.05s' }}>
-              <Icon name="ShieldCheck" size={15} className="mr-1.5 text-[hsl(38_95%_60%)]" />
+              <Icon name="ShieldCheck" size={15} className="mr-1.5 text-[hsl(43_85%_48%)]" />
               Все партнёры проходят верификацию
             </Badge>
             <h1 className="animate-float-up font-display text-5xl font-bold leading-[1.05] text-white md:text-7xl" style={{ animationDelay: '0.12s' }}>
@@ -246,7 +246,7 @@ const Index = () => {
                     className="border-0 bg-transparent text-white placeholder:text-white/50 focus-visible:ring-0"
                   />
                 </div>
-                <Button className="gradient-accent h-12 px-8 font-semibold text-[hsl(211_80%_18%)] hover:opacity-90">
+                <Button className="gradient-accent h-12 px-8 font-semibold text-[hsl(222_55%_12%)] hover:opacity-90">
                   Найти партнёра
                 </Button>
               </div>
@@ -352,7 +352,7 @@ const Index = () => {
             {VERIFY_STEPS.map((s, i) => (
               <div key={s.title} className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
                 <div className="mb-4 flex items-center justify-between">
-                  <div className="grid h-12 w-12 place-items-center rounded-xl gradient-accent text-[hsl(211_80%_18%)]">
+                  <div className="grid h-12 w-12 place-items-center rounded-xl gradient-accent text-[hsl(222_55%_12%)]">
                     <Icon name={s.icon} size={24} />
                   </div>
                   <span className="font-display text-4xl font-bold text-white/15">0{i + 1}</span>
@@ -424,7 +424,7 @@ const Index = () => {
             <img src={MAP_IMG} alt="Глобальная сеть" className="rounded-3xl border shadow-2xl" />
             <div className="absolute -bottom-6 -left-6 rounded-2xl border bg-card p-5 shadow-xl">
               <div className="flex items-center gap-3">
-                <div className="grid h-12 w-12 place-items-center rounded-xl gradient-accent text-[hsl(211_80%_18%)]">
+                <div className="grid h-12 w-12 place-items-center rounded-xl gradient-accent text-[hsl(222_55%_12%)]">
                   <Icon name="TrendingUp" size={24} />
                 </div>
                 <div>
@@ -501,7 +501,7 @@ const Index = () => {
           <div className="grid gap-10 md:grid-cols-4">
             <div>
               <a href="#hero" className="flex items-center gap-2.5">
-                <div className="grid h-10 w-10 place-items-center rounded-xl gradient-accent text-[hsl(211_80%_18%)]">
+                <div className="grid h-10 w-10 place-items-center rounded-xl gradient-accent text-[hsl(222_55%_12%)]">
                   <Icon name="Globe2" size={22} />
                 </div>
                 <span className="font-display text-xl font-bold text-gradient">SD Trade</span>
