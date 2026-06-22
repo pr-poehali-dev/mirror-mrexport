@@ -105,7 +105,7 @@ const Index = () => {
       setOfferModal(null);
       setOfferForm({ name: '', email: '', comment: '' });
     } catch {
-      toast({ title: 'Не удалось отправить', description: 'Попробуйте позже или напишите на hello@mrexport.ru', variant: 'destructive' });
+      toast({ title: 'Не удалось отправить', description: 'Попробуйте позже или напишите на hello@sdtrade.ru', variant: 'destructive' });
     } finally {
       setOfferSending(false);
     }
@@ -128,7 +128,7 @@ const Index = () => {
       toast({ title: 'Заявка отправлена!', description: 'Менеджер свяжется с вами в ближайшее время.' });
       setForm({ name: '', email: '', company: '', message: '' });
     } catch {
-      toast({ title: 'Не удалось отправить', description: 'Попробуйте позже или напишите на hello@mrexport.ru', variant: 'destructive' });
+      toast({ title: 'Не удалось отправить', description: 'Попробуйте позже или напишите на hello@sdtrade.ru', variant: 'destructive' });
     } finally {
       setSending(false);
     }
@@ -145,7 +145,7 @@ const Index = () => {
                 <Icon name="Globe2" size={22} />
               </div>
               <span className="font-display text-xl font-bold tracking-wide text-white">
-                Mr<span className="text-gradient">Export</span>
+                SD<span className="text-gradient"> Trade</span>
               </span>
             </a>
 

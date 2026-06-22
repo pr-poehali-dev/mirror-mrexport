@@ -54,7 +54,7 @@ def handler(event: dict, context) -> dict:
     contact_email = os.environ.get('CONTACT_EMAIL', smtp_user)
 
     body_text = (
-        f'Новая заявка с сайта MrExport\n\n'
+        f'Новая заявка с сайта SD Trade\n\n'
         f'Имя: {name}\n'
         f'Email: {email}\n'
         f'Компания: {company or "—"}\n\n'
@@ -62,7 +62,7 @@ def handler(event: dict, context) -> dict:
     )
 
     msg = MIMEText(body_text, 'plain', 'utf-8')
-    msg['Subject'] = Header(f'Заявка с MrExport от {name}', 'utf-8')
+    msg['Subject'] = Header(f'Заявка с SD Trade от {name}', 'utf-8')
     msg['From'] = smtp_user
     msg['To'] = contact_email
     msg['Reply-To'] = email

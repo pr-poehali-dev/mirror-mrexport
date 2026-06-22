@@ -67,7 +67,7 @@ const Auth = () => {
       if (!res.ok) throw new Error(data.error || 'Ошибка регистрации');
       localStorage.setItem('mx_token', data.token);
       localStorage.setItem('mx_partner', JSON.stringify(data.partner));
-      toast({ title: 'Аккаунт создан!', description: 'Добро пожаловать на платформу MrExport.' });
+      toast({ title: 'Аккаунт создан!', description: 'Добро пожаловать на платформу SD Trade.' });
       navigate('/');
     } catch (err: unknown) {
       toast({ title: err instanceof Error ? err.message : 'Ошибка регистрации', variant: 'destructive' });
@@ -86,7 +86,7 @@ const Auth = () => {
             <Icon name="Globe2" size={22} />
           </div>
           <span className="font-display text-xl font-bold text-white">
-            Mr<span className="text-gradient">Export</span>
+            SD<span className="text-gradient"> Trade</span>
           </span>
         </a>
 
@@ -120,7 +120,7 @@ const Auth = () => {
             </div>
           </div>
           <p className="mt-3 text-white/70 text-sm italic">
-            «Через MrExport нашли надёжных покупателей в Египте и Иране. Теперь экспортируем 80 000 т/год.»
+            «Через SD Trade нашли надёжных покупателей в Египте и Иране. Теперь экспортируем 80 000 т/год.»
           </p>
           <div className="mt-2 flex gap-0.5">
             {[1,2,3,4,5].map(s => <Icon key={s} name="Star" size={13} className="text-[hsl(38_95%_60%)]" />)}
@@ -136,7 +136,7 @@ const Auth = () => {
             <div className="grid h-9 w-9 place-items-center rounded-xl gradient-export text-white">
               <Icon name="Globe2" size={19} />
             </div>
-            <span className="font-display text-lg font-bold">MrExport</span>
+            <span className="font-display text-lg font-bold">SD Trade</span>
           </a>
 
           {/* TABS */}
