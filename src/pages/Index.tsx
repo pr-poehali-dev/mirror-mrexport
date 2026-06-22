@@ -144,8 +144,8 @@ const Index = () => {
               <div className="grid h-10 w-10 place-items-center rounded-xl gradient-accent text-[hsl(211_80%_18%)]">
                 <Icon name="Globe2" size={22} />
               </div>
-              <span className="font-display text-xl font-bold tracking-wide text-white">
-                SD<span className="text-gradient"> Trade</span>
+              <span className="font-display text-xl font-bold tracking-wide text-gradient">
+                SD Trade
               </span>
             </a>
 
@@ -504,7 +504,7 @@ const Index = () => {
                 <div className="grid h-10 w-10 place-items-center rounded-xl gradient-accent text-[hsl(211_80%_18%)]">
                   <Icon name="Globe2" size={22} />
                 </div>
-                <span className="font-display text-xl font-bold text-white">Mr<span className="text-gradient">Export</span></span>
+                <span className="font-display text-xl font-bold text-gradient">SD Trade</span>
               </a>
               <p className="mt-4 text-sm text-white/60">Маркетплейс оптовой торговли и поиска экспортных партнёров.</p>
             </div>
@@ -513,7 +513,7 @@ const Index = () => {
             <FooterCol title="Поддержка" links={['Помощь', 'Верификация', 'Документы', 'Безопасность']} />
           </div>
           <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 text-sm text-white/50 md:flex-row">
-            <span>© 2026 MrExport. Все права защищены.</span>
+            <span>© 2026 SD Trade. Все права защищены.</span>
             <div className="flex gap-4">
               {['Send', 'Mail', 'Linkedin'].map((s) => (
                 <a key={s} href="#contacts" className="grid h-9 w-9 place-items-center rounded-lg bg-white/10 text-white transition hover:bg-white/20">

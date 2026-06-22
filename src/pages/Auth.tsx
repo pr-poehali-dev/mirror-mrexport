@@ -85,8 +85,8 @@ const Auth = () => {
           <div className="grid h-10 w-10 place-items-center rounded-xl gradient-accent text-[hsl(211_80%_18%)]">
             <Icon name="Globe2" size={22} />
           </div>
-          <span className="font-display text-xl font-bold text-white">
-            SD<span className="text-gradient"> Trade</span>
+          <span className="font-display text-xl font-bold text-gradient">
+            SD Trade
           </span>
         </a>
 
